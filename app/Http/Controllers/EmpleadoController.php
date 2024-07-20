@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Empleado;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+
 
 class EmpleadoController extends Controller
 {
@@ -28,7 +30,8 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datosEmpleado = request()->all();
+        return response()->json($datosEmpleado);
     }
 
     /**

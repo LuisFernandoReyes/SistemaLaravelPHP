@@ -1,3 +1,3 @@
 Formulario para editar empleados
 <br>
-@include('empleado.form');
+@include('empleado.form')

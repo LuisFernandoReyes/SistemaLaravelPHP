@@ -22,7 +22,11 @@ Mostrar la lista de empleados
                 <td> {{ $empleado->ApellidoPaterno }} </td>
                 <td> {{ $empleado->ApellidoPaterno }} </td>
                 <td> {{ $empleado->correo }} </td>
-                <td> Editar | Borrar
+                <td> 
+
+                <a href="{{ url('/empleado/'.$empleado->id.'/edit') }} ">
+                Editar 
+                </a>
 
                 <form action="{{ url('/empleado/'.$empleado->id ) }}" method="post">
                     @csrf

@@ -14,8 +14,8 @@ Formulario que tendrá los datos en común con create y edit
     <br>
 
     <label for="Foto">Foto</label>
-    
-    {{ $empleado->foto}}
+    <img src="{{ asset('storage').'/'.$empleado->foto }}" width="100" alt="">
+
     <input type="file" name="Foto" value="" id="Foto">
     <br>
 

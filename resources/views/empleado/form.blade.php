@@ -24,3 +24,5 @@ Formulario que tendrá los datos en común con create y edit
 
     <label for="Enviar">Enviar</label>
     <input type="submit" value="Guardar Datos">
+
+    <a href="{{ url('empleado/') }}">Regresar al inicio</a>

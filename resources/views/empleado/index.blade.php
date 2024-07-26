@@ -1,4 +1,5 @@
 Mostrar la lista de empleados
+<a href="{{ url('/empleado/create') }}">Crear nuevo usuario</a>
 
 <div class="table-responsive">
     <table class="table table-primary">

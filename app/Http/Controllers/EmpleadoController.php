@@ -38,7 +38,7 @@ class EmpleadoController extends Controller
             'Nombre'=>'required|string|max:100',
             'ApellidoPaterno'=>'required|string|max:100',
             'ApellidoMaterno'=>'required|string|max:100',
-            'Correo'=>'required|mail',
+            'Correo'=>'required|email',
             'foto'=>'required|max:10000|mimes:jpg,png,jpeg'
         ];
         $mensaje=[
@@ -46,7 +46,7 @@ class EmpleadoController extends Controller
             'foto.required'=>'La foto es requerida'
         ];
         $this->validate($request,$campos,$mensaje);
-        
+
 
         $datosEmpleado = request()->except('_token');
 
@@ -83,6 +83,25 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $campos=[
+            'Nombre'=>'required|string|max:100',
+            'ApellidoPaterno'=>'required|string|max:100',
+            'ApellidoMaterno'=>'required|string|max:100',
+            'Correo'=>'required|email'
+        ];
+        $mensaje=[
+            'required'=>'El :attribute es requerido',
+        ];
+
+        if($request->hasFile('Foto')){
+            $campos=['foto'=>'required|max:10000|mimes:jpg,png,jpeg'];
+            $mensaje=['foto.required'=>'La foto es requerida'];
+        }
+
+
+        $this->validate($request,$campos,$mensaje);
+
         $datosEmpleado = request()->except(['_token','_method']);
 
         if($request->hasFile('Foto')){

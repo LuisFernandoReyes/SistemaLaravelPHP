@@ -3,11 +3,17 @@
 @section('content')
 <div class="container">
 
-    @if(Session::has('Mensaje'))
-    {{Session::get('Mensaje')}}
-    @endif
+    <div class="alert alert-success alert-dismissible" role="alert">
+        @if(Session::has('Mensaje'))
+        {{ Session::get('Mensaje') }}
+        @endif
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
     <a href="{{ url('/empleado/create') }}" class="btn btn-success">Registrar nuevo usuario</a>
-<br><br>
+    <br><br>
     <div class="table-responsive">
         <table class="table table-primary">
             <thead>

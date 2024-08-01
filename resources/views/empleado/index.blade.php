@@ -3,14 +3,16 @@
 @section('content')
 <div class="container">
 
-    <div class="alert alert-success alert-dismissible" role="alert">
+    
         @if(Session::has('Mensaje'))
+        <div class="alert alert-success alert-dismissible" role="alert">
         {{ Session::get('Mensaje') }}
-        @endif
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
+        @endif
+       
 
     <a href="{{ url('/empleado/create') }}" class="btn btn-success">Registrar nuevo usuario</a>
     <br><br>

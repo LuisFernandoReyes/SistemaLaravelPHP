@@ -6,8 +6,7 @@ use App\Models\Empleado;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
-
+use Symfony\Component\Mime\MimeTypes;
 
 class EmpleadoController extends Controller
 {
@@ -34,6 +33,21 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
+
+        $campos=[
+            'Nombre'=>'required|string|max:100',
+            'ApellidoPaterno'=>'required|string|max:100',
+            'ApellidoMaterno'=>'required|string|max:100',
+            'Correo'=>'required|mail',
+            'foto'=>'required|max:10000|mimes:jpg,png,jpeg'
+        ];
+        $mensaje=[
+            'required'=>'El :attribute es requerido',
+            'foto.required'=>'La foto es requerida'
+        ];
+        $this->validate($request,$campos,$mensaje);
+        
+
         $datosEmpleado = request()->except('_token');
 
         //Va al formulario de create.blade y revisa gracias al name='Foto' en el formulario

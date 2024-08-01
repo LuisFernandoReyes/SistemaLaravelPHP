@@ -20,3 +20,6 @@ Route::get('/empleado', function () {
 //Solo necesitaré escribir en la url la clase y el método al que quiero acceder, ejemplo 'empleado/create'
 
 Route::resource('empleado',EmpleadoController::class);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

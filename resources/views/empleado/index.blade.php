@@ -6,8 +6,8 @@
     @if(Session::has('Mensaje'))
     {{Session::get('Mensaje')}}
     @endif
-    <a href="{{ url('/empleado/create') }}">Crear nuevo usuario</a>
-
+    <a href="{{ url('/empleado/create') }}" class="btn btn-success">Registrar nuevo usuario</a>
+<br><br>
     <div class="table-responsive">
         <table class="table table-primary">
             <thead>
@@ -27,7 +27,7 @@
                     <td> {{ $empleado->id }} </td>
 
                     <td>
-                        <img src="{{ asset('storage').'/'.$empleado->foto }}" alt="" width="100">
+                        <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$empleado->foto }}" alt="" width="100">
 
                     </td>
 
@@ -38,14 +38,14 @@
                     <td> {{ $empleado->correo }} </td>
                     <td>
 
-                        <a href="{{ url('/empleado/'.$empleado->id.'/edit') }} ">
+                        <a href="{{ url('/empleado/'.$empleado->id.'/edit') }} " class="btn btn-warning">
                             Editar
                         </a>
 
-                        <form action="{{ url('/empleado/'.$empleado->id ) }}" method="post">
+                        <form action="{{ url('/empleado/'.$empleado->id ) }}" method="post" class="d-inline">
                             @csrf
                             {{ method_field('DELETE') }}
-                            <input type="submit" onclick="return confirm('¿Deseas borrar este registro?')" value="borrar">
+                            <input class="btn btn-danger" type="submit" onclick="return confirm('¿Deseas borrar este registro?')" value="borrar">
 
                         </form>
 

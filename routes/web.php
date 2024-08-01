@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 //'App' debe ser escrito con mayúsculas, aunque el nombre de la carpeta sea 'app'
 use App\Http\Controllers\EmpleadoController;
+use GuzzleHttp\Middleware;
 use GuzzleHttp\Promise\Create;
+use Illuminate\Routing\RouteGroup;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/empleado', function () {
@@ -22,4 +24,9 @@ Route::get('/empleado', function () {
 Route::resource('empleado',EmpleadoController::class);
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [EmpleadoController::class, 'index'])->name('home');
+
+Route::group(['middleware'=>'auth'], function(){
+    
+    Route::get('/', [EmpleadoController::class, 'index'])->name('home');
+});

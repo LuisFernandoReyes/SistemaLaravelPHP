@@ -21,12 +21,12 @@ Route::get('/empleado', function () {
 //Con este comando podré acceder a todas las rutas sin necesidad de especificar el método en el código
 //Solo necesitaré escribir en la url la clase y el método al que quiero acceder, ejemplo 'empleado/create'
 
-Route::resource('empleado',EmpleadoController::class);
-Auth::routes();
+Route::resource('empleado',EmpleadoController::class)->middleware('auth');
+Auth::routes(['register'=>false,'reset'=>false]);
 
 Route::get('/home', [EmpleadoController::class, 'index'])->name('home');
 
 Route::group(['middleware'=>'auth'], function(){
-    
+
     Route::get('/', [EmpleadoController::class, 'index'])->name('home');
 });

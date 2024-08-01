@@ -15,7 +15,7 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        $datos['empleados']=Empleado::paginate(5);
+        $datos['empleados']=Empleado::paginate(1);
         return view('empleado.index',$datos);
 
     }
@@ -39,11 +39,11 @@ class EmpleadoController extends Controller
             'ApellidoPaterno'=>'required|string|max:100',
             'ApellidoMaterno'=>'required|string|max:100',
             'Correo'=>'required|email',
-            'foto'=>'required|max:10000|mimes:jpg,png,jpeg'
+            'Foto' => 'required|mimes:jpg,jpeg,png|max:10000'
         ];
         $mensaje=[
             'required'=>'El :attribute es requerido',
-            'foto.required'=>'La foto es requerida'
+            'Foto.required'=>'La foto es requerida'
         ];
         $this->validate($request,$campos,$mensaje);
 
